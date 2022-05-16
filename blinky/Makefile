@@ -38,7 +38,6 @@ $(NAME)_$(BOARD1).bin: constraints/$(BOARD1).pcf rtl/$(NAME).v
 	icepack build/$(BOARD1)/$(NAME)_$(BOARD1).asc build/$(BOARD1)/$(NAME)_$(BOARD1).bin
 
 
-#$(NAME)_$(BOARD2).bin: constraints/$(BOARD2).lpf rtl/$(NAME).v
 $(NAME)_$(BOARD2).bin:
 
 	mkdir -p build/$(BOARD2)
@@ -47,6 +46,13 @@ $(NAME)_$(BOARD2).bin:
 	&& nextpnr-ecp5 --85k --json build/$(BOARD2)/$(NAME).json --lpf constraints/ulx3s.lpf --textcfg build/$(BOARD2)/ulx3s_out.config --package CABGA381 \
 	&& ecppack build/$(BOARD2)/ulx3s_out.config build/$(BOARD2)/ulx3s.bit
 
+review_$(NAME)_$(BOARD1):
+
+	nextpnr-ice40 build/alhambra/blinky.json --gui --package tq144
+
+review_$(NAME)_$(BOARD2):
+
+	nextpnr-ecp5 build/ulx3s/blinky.json --gui --package CABGA381
 #------------------------------
 #-- Upload the bitsream to board
 #------------------------------
