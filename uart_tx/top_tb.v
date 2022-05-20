@@ -32,7 +32,7 @@ reg clk = 0;
 wire tx;
 
 //-- Instanciar el componente
-scicad2 #(.BAUD(BAUD), .DELAY(DELAY))
+top #(.BAUD(BAUD), .DELAY(DELAY))
   dut(
     .clk(clk),
     .tx(tx)
@@ -47,8 +47,8 @@ always
 initial begin
 
   //-- Fichero donde almacenar los resultados
-  $dumpfile("scicad2_tb.vcd");
-  $dumpvars(0, scicad2_tb);
+  $dumpfile("top_tb.vcd");
+  $dumpvars(0, top_tb);
 
   #(FRAME * 20) $display("FIN de la simulacion");
   $finish;
