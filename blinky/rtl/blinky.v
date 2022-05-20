@@ -8,8 +8,8 @@ module blinky
    always @(posedge clk) begin
       count <= count + 1;
       if (count == clk_freq_hz-1) begin
-	 led0 <= !led0;
-	 count <= 0;
+	       led0 <= !led0;
+	       count <= 0;
       end
    end
 

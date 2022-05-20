@@ -12,10 +12,10 @@ wire led;
 
 
 //-- Instantiate test component
-blinky #(.clk_freq_hz(1_000))
+blinky #(.clk_freq_hz(10_000))
   dut(
     .clk(clk_in),
-    .q (led)
+    .led0 (led)
   );
 
 //-- Generate clock and enable at 4th second
@@ -28,7 +28,7 @@ initial begin
   $dumpfile("blinky_tb.vcd");
   $dumpvars(0, blinky_tb);
 
-  # 10000000 $display("END of simulation");
+  # 100000 $display("END of simulation");
   $finish;
 end
 
