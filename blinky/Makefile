@@ -14,14 +14,16 @@ sim: $(NAME)_tb.vcd
 
 $(NAME)_tb.vcd: rtl/$(NAME).v tb/$(NAME)_tb.v
 
+	mkdir -p build
+
 	#-- Compile
-	iverilog $^ -o $(NAME)_tb.out
+	iverilog $^ -o build/$(NAME)_tb.out
 
 	#-- Simulate
-	./$(NAME)_tb.out
+	build/$(NAME)_tb.out
 
 	#-- Check sim using gtkwave
-	gtkwave $@ $(NAME)_tb.gtkw &
+	gtkwave $@ build/$(NAME)_tb.gtkw &
 
 $(NAME)_$(BOARD1).bin: constraints/$(BOARD1).pcf rtl/$(NAME).v
 
