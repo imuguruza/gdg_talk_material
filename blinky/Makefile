@@ -60,7 +60,7 @@ flash_alhambra:
 		iceprog -d i:0x0403:0x6010:0 build/$(BOARD1)/$(NAME)_$(BOARD1).bin
 
 flash_uls3x:
-		fujprog build/$(BOARD2)/$(NAME)_$(BOARD2).bin
+		fujprog build/$(BOARD2)/$(NAME)_$(BOARD2).bit
 
 clean:
 	#rm -f *.bin *.asc *.json *.out *.vcd *~
